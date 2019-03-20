@@ -20,13 +20,45 @@
 	<context:property-placeholder location="classpath:db.properties"/>
 	
 	<!-- dataSource -->
-	<bean class="com.mchange.v2.c3p0.ComboPooledDataSource">
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
 		<property name="user" value="${jdbc.user}"></property>
 		<property name="password" value="${jdbc.password}"></property>
 		<property name="driverClass" value="${jdbc.driverClass}"></property>
 		<property name="jdbcUrl" value="${jdbc.jdbcUrl}"></property>
 	</bean>
 	
+	<!-- EntityManagerFactory -->
+	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="jpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"></bean>
+		</property>
+		<property name="packagesToScan" value="com.lancelotpro.sssp"></property>
+		<property name="jpaProperties">
+			<props>
+               <prop key="hibernate.ejb.naming_strategy">org.hibernate.cfg.ImprovedNamingStrategy</prop>
+               <prop key="hibernate.hbm2ddl.auto">update</prop>
+               <prop key="hibernate.show_sql">true</prop>
+               <prop key="hibernate.format_sql">true</prop>
+               <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop>
+               <prop key="hibernate.cache.use_second_level_cache">true</prop>
+               <prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</prop>
+               <prop key="hibernate.cache.use_query_cache">true</prop>
+           </props>
+		</property>
+		<property name="sharedCacheMode" value="ENABLE_SELECTIVE"></property>
+	</bean>
+	
+	<!-- transactionManager -->
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory"></property>
+	</bean>
+	
+	<!-- tx -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	
+	<!-- jpa -->
+	<jpa:repositories base-package="com.lancelotpro.sssp" entity-manager-factory-ref="entityManagerFactory"></jpa:repositories>
 	
 	
 </beans>
