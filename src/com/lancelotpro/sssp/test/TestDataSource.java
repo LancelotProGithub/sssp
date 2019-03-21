@@ -1,4 +1,4 @@
-package sssp.test;
+package com.lancelotpro.sssp.test;
 
 import java.sql.SQLException;
 
