@@ -14,7 +14,6 @@ public class EmployeeController {
 	
 	@RequestMapping(value="/emplist")
 	public String empList() {
-		System.out.println("test");
 		return "employee/employeeList";
 	}
 }
