@@ -40,7 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     				<th>CreateTime</th>
     				<th>Dept-Name</th>
     				<th>编辑</th>
-    				<th>删除后</th>
+    				<th>删除</th>
     			</tr>
     			<c:forEach items="${emps }" var="emp">
     				<tr>
