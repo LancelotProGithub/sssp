@@ -14,7 +14,14 @@ public class EmployeeService {
 	@Autowired
 	private EmployRepository employRepository;
 	
-	
+	/**
+	 * 根据ID获取到员工
+	 * @param id
+	 * @return
+	 */
+	public Employee getEmployee(int id) {
+		return employRepository.findOne(id);
+	}
 	
 	/**
 	 * 查询所有的员工

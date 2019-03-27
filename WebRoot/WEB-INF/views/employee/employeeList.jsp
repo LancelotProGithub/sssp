@@ -28,17 +28,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>  	
-    <div class="container text-center">
-    	<h3>Employee List</h3>
+    <div class="container">
+    	<div class="text-center">
+    		<h3>员工列表</h3>
+    	</div>
+    	<!-- 新增员工的按钮 -->
+    	<h3><a class="btn btn-success" href=""><span class="glyphicon glyphicon-plus"></span>新增员工</a></h3>
     	<div class="row">
     		<table class="table table-striped table-bordered table-hover">
     			<tr>
-    				<th>ID</th>
-    				<th>LastName</th>
-    				<th>Email</th>
-    				<th>Birth</th>
-    				<th>CreateTime</th>
-    				<th>Dept-Name</th>
+    				<th>序号ID</th>
+    				<th>姓名</th>
+    				<th>邮件地址</th>
+    				<th>出生日期</th>
+    				<th>系统-创建时间</th>
+    				<th>所属部门</th>
     				<th>编辑</th>
     				<th>删除</th>
     			</tr>
@@ -50,7 +54,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     					<td>${emp.birth }</td>
     					<td>${emp.createTime }</td>
     					<td>${emp.dept.departName }</td>
-    					<td><a href="">编辑</a> </td>
+    					<td><a href="emp/${emp.id }">编辑</a> </td>
     					<td><a href="">删除</a> </td>
     				</tr>
     			</c:forEach>
