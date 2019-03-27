@@ -3,6 +3,8 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -35,21 +37,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<h3><a class="btn btn-success" href="emplist"><span class="glyphicon glyphicon-arrow-left"></span>返回</a></h3>
     	
     	<!-- 表单 -->
-    	<form>
+    	<form:form action="" method="POST" modelAttribute="employee">
     	  <div class="form-group">
 		    <label for="id">ID序号：</label>
 		  </div>
 		  <div class="form-group">
 		    <label for="lastName">姓名</label>
-		    <input type="text" class="form-control" id="lastName" placeholder="姓名">
+		    <form:input path="lastName" class="form-control" id="lastName" placeholder="姓名"></form:input>
 		  </div>
 		  <div class="form-group">
 		    <label for="email">邮件地址</label>
-		    <input type="email" class="form-control" id="email" placeholder="邮件地址">
+		    <form:input path="email" class="form-control" id="email" placeholder="邮件地址"></form:input>
 		  </div>
 		  <div class="form-group">
 		    <label for="birth">出生日期</label>
-		    <input type="text" class="form-control" id="birth" placeholder="出生日期">
+		    <form:input path="birth" class="form-control" id="birth" placeholder="出生日期"></form:input>
 		  </div>
 		  <div class="form-group">
 		    <label for="dept">所属部门</label>
@@ -57,7 +59,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		  </div>
 		  <button type="submit" class="btn btn-primary">提交</button>
 		  <button type="reset" class="btn btn-danger">重置</button>
-		</form>
+		</form:form>
     </div>
   </body>
 </html>

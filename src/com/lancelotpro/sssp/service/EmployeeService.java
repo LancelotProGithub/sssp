@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.lancelotpro.sssp.entity.Employee;
 import com.lancelotpro.sssp.repository.EmployRepository;
@@ -19,6 +20,7 @@ public class EmployeeService {
 	 * @param id
 	 * @return
 	 */
+	@Transactional(readOnly=true)
 	public Employee getEmployee(int id) {
 		return employRepository.findOne(id);
 	}
@@ -27,6 +29,7 @@ public class EmployeeService {
 	 * 查询所有的员工
 	 * @return
 	 */
+	@Transactional(readOnly=true)
 	public List<Employee> getAllEmployees(){
 		return employRepository.findAll();
 	}
