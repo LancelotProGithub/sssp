@@ -4,7 +4,6 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -25,6 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type="text/javascript" src="script/jquery-1.9.1.min.js"></script>
 	
 	<script type="text/javascript" src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+	
 
   </head>
   
@@ -37,29 +37,40 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<h3><a class="btn btn-success" href="emplist"><span class="glyphicon glyphicon-arrow-left"></span>返回</a></h3>
     	
     	<!-- 表单 -->
-    	<form:form action="" method="POST" modelAttribute="employee">
+    	<form action="emp/${emp.id }" method="POST">
     	  <div class="form-group">
 		    <label for="id">ID序号：</label>
 		  </div>
 		  <div class="form-group">
 		    <label for="lastName">姓名</label>
-		    <form:input path="lastName" class="form-control" id="lastName" placeholder="姓名"></form:input>
+		    <input type="text" class="form-control" name="lastName" placeholder="姓名" value="${emp.lastName }">
 		  </div>
 		  <div class="form-group">
 		    <label for="email">邮件地址</label>
-		    <form:input path="email" class="form-control" id="email" placeholder="邮件地址"></form:input>
+		    <input type="email" class="form-control" name="email" placeholder="邮件地址" value="${emp.email }">
 		  </div>
 		  <div class="form-group">
 		    <label for="birth">出生日期</label>
-		    <form:input path="birth" class="form-control" id="birth" placeholder="出生日期"></form:input>
+		    <input type="date" class="form-control" name="birth" placeholder="出生日期" value="${emp.birth }">
 		  </div>
 		  <div class="form-group">
 		    <label for="dept">所属部门</label>
-		    <input type="text" class="form-control" id="dept" placeholder="所属部门">
+		    <select name=dept.id class="form-control">
+		    	<c:forEach items="${depts }" var="dept">
+		    		<c:choose>
+		    			<c:when test="${emp.dept.id} == ${dept.id }">
+		    				<option value="${dept.id }" selected="selected">${dept.departName }</option>
+		    			</c:when>
+		    			<c:otherwise>
+		    				<option value="${dept.id }">${dept.departName }</option>
+		    			</c:otherwise>
+		    		</c:choose>
+		    	</c:forEach>
+		    </select>
 		  </div>
 		  <button type="submit" class="btn btn-primary">提交</button>
 		  <button type="reset" class="btn btn-danger">重置</button>
-		</form:form>
+		</form>
     </div>
   </body>
 </html>

@@ -1,5 +1,7 @@
 package com.lancelotpro.sssp.controller;
 
+import static org.hamcrest.CoreMatchers.nullValue;
+
 import java.util.List;
 import java.util.Map;
 
@@ -25,20 +27,6 @@ public class EmployeeController {
 	@Autowired
 	private DeptService deptService;
 	
-	/**
-	 * 在每个方法之前，执行一遍modelattribute
-	 * @param id
-	 * @param map
-	 */
-	@ModelAttribute
-	public void getEmployee(@RequestParam(value="id",required=false) Integer id,
-			Map<String, Object> map){
-		if(id != null){
-			Employee employee = employeeService.getEmployee(id);
-			employee.setDept(null);
-			map.put("employee", employee);
-		}
-	}
 	
 	/**
 	 * 列出所有的员工
@@ -67,6 +55,19 @@ public class EmployeeController {
 			map.put("depts", deptService.getAll());
 		}
 		return "employee/employeeEdit";
+	}
+	
+	@RequestMapping(value="/emp/{id}",method=RequestMethod.POST)
+	public String empSave(@PathVariable("id")Integer id,Employee employee){
+		if(id !=null) {
+			System.out.println("id="+id);
+			Employee employee1 = employee;
+			System.out.println(employee1.getLastName());
+			System.out.println(employee1.getBirth());
+			System.out.println(employee1.getEmail());
+			System.out.println(employee1.getDept());
+		}
+		return "employee/employeeList";
 	}
 	
 }
