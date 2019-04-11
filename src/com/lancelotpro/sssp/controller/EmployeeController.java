@@ -57,7 +57,7 @@ public class EmployeeController {
 		return "employee/employeeEdit";
 	}
 	
-	@RequestMapping(value="/emp/{id}",method=RequestMethod.POST)
+	@RequestMapping(value="/emp/{id}",method=RequestMethod.PUT)
 	public String empSave(@PathVariable("id")Integer id,Employee employee){
 		if(id !=null) {
 			System.out.println("id="+id);
@@ -67,7 +67,7 @@ public class EmployeeController {
 			System.out.println(employee1.getEmail());
 			System.out.println(employee1.getDept());
 		}
-		return "employee/employeeList";
+		return "success";
 	}
 	
 }

@@ -38,8 +38,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	
     	<!-- 表单 -->
     	<form action="emp/${emp.id }" method="POST">
+    		<input type="hidden" name="_method" value="PUT">
     	  <div class="form-group">
-		    <label for="id">ID序号：</label>
+		    <label for="id">ID序号：${emp.id }</label>
 		  </div>
 		  <div class="form-group">
 		    <label for="lastName">姓名</label>
