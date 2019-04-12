@@ -34,4 +34,20 @@ public class EmployeeService {
 		return employRepository.findAll();
 	}
 	
+	/**
+	 *  保存 成功1 失败0
+	 * @param employee
+	 * @return
+	 */
+	public Integer saveEmployee(Employee employee) {
+		if(employee != null) {
+			//取出修改前的创建时间，不修改
+			Employee bfemp = employRepository.findOne(employee.getId());
+			employee.setCreateTime(bfemp.getCreateTime());
+			employRepository.save(employee);
+			return 1;
+		}
+		return 0;
+	}
+	
 }

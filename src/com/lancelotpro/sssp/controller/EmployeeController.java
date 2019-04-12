@@ -1,18 +1,14 @@
 package com.lancelotpro.sssp.controller;
 
-import static org.hamcrest.CoreMatchers.nullValue;
 
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.lancelotpro.sssp.entity.Employee;
 import com.lancelotpro.sssp.service.DeptService;
@@ -56,18 +52,19 @@ public class EmployeeController {
 		}
 		return "employee/employeeEdit";
 	}
-	
+	/**
+	 *  ¸üÐÂ
+	 * @param id
+	 * @param employee
+	 * @return
+	 */
 	@RequestMapping(value="/emp/{id}",method=RequestMethod.PUT)
-	public String empSave(@PathVariable("id")Integer id,Employee employee){
+	public String empUpdate(@PathVariable("id")Integer id,Employee employee){
 		if(id !=null) {
-			System.out.println("id="+id);
-			Employee employee1 = employee;
-			System.out.println(employee1.getLastName());
-			System.out.println(employee1.getBirth());
-			System.out.println(employee1.getEmail());
-			System.out.println(employee1.getDept());
+			employeeService.saveEmployee(employee);
+			return "success";
 		}
-		return "success";
+		return "error";
 	}
 	
 }

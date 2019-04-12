@@ -37,7 +37,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<div class="container">
     		<div class="row">
     			<div class="text-center">
-    				<h2>成功！！</h2>
+    				<h2>失败！！请稍后再试！</h2>
     				<h5>页面将于2秒后跳转...</h5>
     			</div>
     		</div>
