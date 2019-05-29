@@ -67,4 +67,9 @@ public class EmployeeController {
 		return "error";
 	}
 	
+	@RequestMapping(value="/emp/new",method=RequestMethod.GET)
+	public String empNew(Employee employee) {
+		return "employee/employeeEdit";
+	}
+	
 }

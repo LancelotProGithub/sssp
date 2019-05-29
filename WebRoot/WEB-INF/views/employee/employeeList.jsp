@@ -33,7 +33,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		<h3>员工列表</h3>
     	</div>
     	<!-- 新增员工的按钮 -->
-    	<h3><a class="btn btn-success" href=""><span class="glyphicon glyphicon-plus"></span>新增员工</a></h3>
+    	<h3><a class="btn btn-success" href="emp/new"><span class="glyphicon glyphicon-plus"></span>新增员工</a></h3>
     	<div class="row">
     		<table class="table table-striped table-bordered table-hover">
     			<tr>
